@@ -1,0 +1,33 @@
+<html>
+    <head></head>
+    <body>
+        <h2>Creating a Table from an Existing Table</h1>
+            <p>nstead of creating a new table every time, one can also copy an existing table and its contents including its structure, into a new table.<br>
+            This can be done using a combination of the CREATE TABLE statement and the SELECT statement.
+            <br> Since its structure is copied, the new table will have the same column definitions as the original table.</p>
+        <h3>Syntax</h3>
+        <p>The basic syntax for creating a table from another table is as follows:</p>
+        <pre>CREATE TABLE NEW_TABLE_NAME AS
+            SELECT [column1, column2...columnN]
+            FROM EXISTING_TABLE_NAME
+            WHERE Condition;</pre>
+        <h3>Example: Creating Table from an Existing Table</h3>
+        <p>Following is an example, which would create a table SALARY using the CUSTOMERS table and having the fields customer ID and customer SALARY</p>
+        <pre>CREATE TABLE SALARY AS
+            SELECT ID, SALARY
+            FROM CUSTOMERS;</pre>
+            This will create a new table SALARY which will have the following structure:<br>
+            <img src="tbftb.png" height="15%" width="45%">
+        <h2>Listing Tables</h2>
+        <p>You can use SQL <b>SHOW TABLES</b> statements in MySQL to list down all the tables available in a selected database.</p>
+        <h3>Syntax</h3>
+        Following is the syntax to list all the tables in SQL in MySQL<br>
+        <pre>SHOW TABLES;</pre>
+        <h3>Example</h3>
+        Following is an example which will list down all the tables from a testDB database.<br>
+        <pre>USE testDB;
+            SHOW TABLES;</pre>
+            This will display the following output depending on the number of tables available in your database.<br>
+            <img src="showtb.png" height="25%" width="45%">
+    </body>
+</html>

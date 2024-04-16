@@ -1,0 +1,86 @@
+<html>
+    <head></head>
+    <body>
+        <h1>PL/SQL - Triggers</h1>
+        <p>Triggers are stored programs, which are automatically executed or fired when some events occur. <br>Triggers are, in fact, written to be executed in response to any of the following events :</p>
+        <ul style="background-color: rgb(247, 249, 199);" >
+            <li >A <b>database manipulation (DML)</b> statement (DELETE, INSERT, or UPDATE)</li><br>
+                 <li>A <b>database definition (DDL)</b> statement (CREATE, ALTER, or DROP).</li><br>
+                 <li>A <b>database operation</b> (SERVERERROR, LOGON, LOGOFF, STARTUP, or SHUTDOWN).</li><br>
+        </ul>
+        <p>Triggers can be defined on the table, view, schema, or database with which the event is associated.</p>
+        <h3>Benefits of Triggers</h3>
+        <ul style="background-color: rgb(247, 249, 199);" >
+            <li >Generating some derived column values automatically</li><br>
+                 <li>Enforcing referential integrity</li><br>
+                 <li>Auditing</li><br>
+                 <li>Imposing security authorizations</li><br>
+                 <li>Preventing invalid transactions</li><br>
+        </ul>
+        <H2>Creating Triggers</H2>
+        <h3>Syntax</h3>
+        <PRE>CREATE [OR REPLACE ] TRIGGER trigger_name  
+            {BEFORE | AFTER | INSTEAD OF }  
+            {INSERT [OR] | UPDATE [OR] | DELETE}  
+            [OF col_name]  
+            ON table_name  
+            [REFERENCING OLD AS o NEW AS n]  
+            [FOR EACH ROW]  
+            WHEN (condition)   
+            DECLARE 
+               Declaration-statements 
+            BEGIN  
+               Executable-statements 
+            EXCEPTION 
+               Exception-handling-statements 
+            END; </PRE>
+        <h3>Example</h3>
+        <pre>Select * from customers;  
+
+            +----+----------+-----+-----------+----------+ 
+            | ID | NAME     | AGE | ADDRESS   | SALARY   | 
+            +----+----------+-----+-----------+----------+ 
+            |  1 | Ramesh   |  32 | Ahmedabad |  2000.00 | 
+            |  2 | Khilan   |  25 | Delhi     |  1500.00 | 
+            |  3 | kaushik  |  23 | Kota      |  2000.00 | 
+            |  4 | Chaitali |  25 | Mumbai    |  6500.00 | 
+            |  5 | Hardik   |  27 | Bhopal    |  8500.00 | 
+            |  6 | Komal    |  22 | MP        |  4500.00 | 
+            +----+----------+-----+-----------+----------+ </pre>
+        <p>The following program creates a row-level trigger for the customers table that would fire for INSERT or UPDATE or DELETE operations<br>
+             performed on the CUSTOMERS table. </p>
+        This trigger will display the salary difference between the old values and new values:<br>
+        <pre>CREATE OR REPLACE TRIGGER display_salary_changes 
+            BEFORE DELETE OR INSERT OR UPDATE ON customers 
+            FOR EACH ROW 
+            WHEN (NEW.ID > 0) 
+            DECLARE 
+               sal_diff number; 
+            BEGIN 
+               sal_diff := :NEW.salary  - :OLD.salary; 
+               dbms_output.put_line('Old salary: ' || :OLD.salary); 
+               dbms_output.put_line('New salary: ' || :NEW.salary); 
+               dbms_output.put_line('Salary difference: ' || sal_diff); 
+            END; 
+            / </pre>
+        <p>When the above code is executed at the SQL prompt, it produces the following result:</p>
+        <pre>Trigger created.</pre>
+        <h2>Triggering a Trigger</h2>
+        <p>Let us perform some DML operations on the CUSTOMERS table. Here is one INSERT statement, which will create a new record in the table:</p>
+        <pre>INSERT INTO CUSTOMERS (ID,NAME,AGE,ADDRESS,SALARY) 
+            VALUES (7, 'Kriti', 22, 'HP', 7500.00 );</pre>
+        <p>When a record is created in the CUSTOMERS table, the above create trigger, <b>display_salary_changes</b> will be fired and it will display the following result :</p>
+        <pre>Old salary: 
+            New salary: 7500 
+            Salary difference:</pre>
+        <p>Because this is a new record, old salary is not available and the above result comes as null. Let us now perform one more DML operation on the CUSTOMERS table.<br>
+             The UPDATE statement will update an existing record in the table</p>
+        <pre>UPDATE customers 
+            SET salary = salary + 500 
+            WHERE id = 2;</pre>
+            <p>When a record is updated in the CUSTOMERS table, the above create trigger, <b>display_salary_changes</b> will be fired and it will display the following result </p>
+            <pre>Old salary: 1500 
+                New salary: 2000 
+                Salary difference: 500 </pre>
+    </body>
+</html>

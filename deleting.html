@@ -1,0 +1,47 @@
+<html>
+    <head>deleting</head>
+    <body>
+        <h2>The SQL DELETE Statement</h2>
+        <p>The SQL <b>DELETE</b> Statement is used to delete the records from an existing table. In order to filter the records to be deleted (or, delete particular records), we need to use the WHERE clause along with the DELETE statement.
+            <br><br>
+            If you execute DELETE statement without a <b>WHERE</b> clause, it will delete all the records from the table.
+            <br><br>
+            Using the DELETE statement, we can delete one or more rows of a single table and records across multiple tables.</p>
+        <h3>Syntax</h3>
+        The basic syntax of the SQL DELETE Query with the WHERE clause is as follows:<br>
+        <pre>DELETE FROM table_name WHERE [condition];</pre>
+        <h3>Example</h3>
+        <p>Assume we have created a table named CUSTOMERS which contains the personal details of customers including their name, age, address and salary etc. 
+            <br>as shown below:</p>
+        <pre>CREATE TABLE CUSTOMERS (
+            ID INT NOT NULL,
+            NAME VARCHAR (20) NOT NULL,
+            AGE INT NOT NULL,
+            ADDRESS CHAR (25),
+            SALARY DECIMAL (18, 2),       
+            PRIMARY KEY (ID)
+         );</pre>
+         Now, insert values into this table using the INSERT statement as follows:<br>
+         <pre>INSERT INTO CUSTOMERS VALUES 
+            (1, 'Ramesh', 32, 'Ahmedabad', 2000.00 ),
+            (2, 'Khilan', 25, 'Delhi', 1500.00 ),
+            (3, 'Kaushik', 23, 'Kota', 2000.00 ),
+            (4, 'Chaitali', 25, 'Mumbai', 6500.00 ),
+            (5, 'Hardik', 27, 'Bhopal', 8500.00 ),
+            (6, 'Komal', 22, 'Hyderabad', 4500.00 ),
+            (7, 'Muffy', 24, 'Indore', 10000.00 );</pre>
+            The table will be created as:<br>
+            <img src="delete1.png" height="30%" width="40%"><br>
+            The following query deletes the record of a customer, whose ID is 6.<br>
+            <pre>DELETE FROM CUSTOMERS WHERE ID = 6;</pre>
+            <h3>Output</h3>
+            The output will be displayed as:<br>
+            <pre>Query OK, 1 row affected (0.10 sec)</pre>
+            <h3>Verification</h3>
+            <p>To verify whether the record(s) have been deleted from the table, <br>
+            we need to retrieve the modified table using the SELECT query, as shown below</p>
+            <pre>SELECT * FROM CUSTOMERS;</pre>
+            Now, the CUSTOMERS table would have the following records:<br>
+            <img src="delete2.png" height="30%" width="40%">
+    </body>
+</html>

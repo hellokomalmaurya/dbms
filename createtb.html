@@ -1,0 +1,28 @@
+<html>
+    <head></head>
+    <body>
+        <h1>CREATE TABLE</h1>
+        <p>In the SQL database for creating a table, we use a command called <b>CREATE TABLE</b>.</p>
+        <h2>SQL CREATE TABLE Statement</h2>
+        <p>A Table is a combination of rows and columns. For creating a table we have to define the structure of a table by adding names to columns and providing data type and size of data to be stored in columns.</p>
+        <h3>Syntax</h3>
+        <pre>CREATE TABLE table_name(
+            column1 datatype,
+            column2 datatype,
+            column3 datatype,
+            .....
+            columnN datatype,
+            PRIMARY KEY( one or more columns )
+         );</pre>
+         <h3>Example: Creating Table in SQL</h3>
+         <p>he following SQL command will create the <b>CUSTOMERS</b> table only when there is no table exists with the same name otherwise it will exit without any error.</p>
+            <pre>CREATE TABLE IF NOT EXISTS CUSTOMERS(
+                ID          INT NOT NULL,
+                NAME        VARCHAR (20) NOT NULL,
+                AGE         INT NOT NULL,
+                ADDRESS     CHAR (25),
+                SALARY      DECIMAL (18, 2),
+                PRIMARY KEY (ID)
+             );</pre>
+        </body>
+</html>

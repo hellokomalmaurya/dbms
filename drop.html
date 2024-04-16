@@ -1,0 +1,49 @@
+<html>
+    <head>drop</head>
+    <body>
+        <h1>DROP Table</h1>
+        <p>SQL provides command to DROP an existing table completely in a database. Once SQL DROP command is issued then there is no way back to recover the table including its data, 
+            <br>so be careful before issuing this command in production system.</p>
+        <h2>The SQL DROP Table Statement</h2>
+        <p>The SQL DROP TABLE statement is a Data Definition Language (DDL) command that is used to remove a table's definition, and its data, 
+            <br>indexes, triggers, constraints and permission specifications (if any).</p>
+        <b>note:</b>
+        <ul style="background-color: rgb(247, 249, 199);" >
+            <li >You should be very careful while using this command because once a table is<br>
+                 deleted then all the information available in that table will also be lost forever.</li>
+                 <li>If the table is partitioned, the statement removes the table definition, 
+                    <br>all its partitions, all data stored in those partitions, and all partition definitions.</li>
+                <li>To drop a table in a database, one must require ALTER permission on the said table and CONTROL permissions on the table schema.</li>
+                <li>Even though it is a data definition language command, it is different from TRUNCATE TABLE statement as the DROP statement completely
+                    <br> frees the table from the memory.</li>
+                <li>DROP TABLE causes an implicit commit, except when used with the TEMPORARY keyword.</li>
+        </ul> 
+        <h3>Syntax</h3>
+        The basic syntax of this DROP TABLE statement is as follows:<br>
+        <pre>DROP TABLE table_name;</pre>
+        <h3>Example</h3>
+        Assume we have created a table named CUSTOMERS using the CREATE TABLE statement as shown below:<br>
+        <pre>CREATE TABLE CUSTOMERS(
+            ID          INT NOT NULL,
+            NAME        VARCHAR (20) NOT NULL,
+            AGE         INT NOT NULL,
+            ADDRESS     CHAR (25),
+            SALARY      DECIMAL (18, 2),
+            PRIMARY KEY (ID)
+         );</pre>
+         Let us first verify the CUSTOMERS table using the DESC command then we will delete it from the database;<br>
+         <pre>DESC Table</pre>
+         If the table is created successfully the DESC command displays the structure of the table as shown below:<br>
+         <img src="drop1.png" height="30%" width="55%">
+         <p>This means that the CUSTOMERS table is available in the database, so let us now drop it as shown below.</p>
+         <pre>DROP TABLE CUSTOMERS;</pre>
+         <h3>Output</h3>
+         The output is displayed as follows:<br>
+         <pre>Query OK, 0 rows affected (0.001 sec)</pre>
+         <h3>Verification</h3>
+         Now, to verify if the table is actually dropped, you can use the DESC CUSTOMERS command as shown:<br>
+         <pre>DESC CUSTOMERS;</pre>
+         Following error is displayed:<br>
+         <pre>ERROR 1146 (42S02): Table 'tutorials.CUSTOMERS' doesn't exist</pre>
+        </body>
+</html>

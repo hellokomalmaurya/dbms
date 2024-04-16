@@ -1,0 +1,73 @@
+<html>
+    <head></head>
+    <body>
+        <h2>The SQL Where Clause</h2>
+        <p>The SQL WHERE clause is used to filter the results obtained by the DML statements such as SELECT, UPDATE and DELETE etc. <br>
+            We can retrieve the data from a single table or multiple tables(after join operation) using the WHERE clause.</p>
+        <p>For instance, you can use the WHERE clause to retrieve details of employees of a department in an organization,<br>
+             or employees earning salary above/below certain amount, or details of students eligible for scholarships etc.
+            <br> This clause basically provides the specification of which records to be retrieved and which are to be to be neglected.</p>
+            <h3>Syntax</h3>
+            The basic syntax of the SQL WHERE clause is as shown below:<br>
+            <pre>DML_Statement column1, column2,... columnN
+                FROM table_name
+                WHERE [condition];</pre>
+            <p>Here, the DML_Statement can be any statement, such as SELECT, UPDATE, DELETE etc.</p>
+        <h2>The SQL DISTINCT Keyword</h2>
+        <p>The SQL <b>DISTINCT</b> keyword is used in conjunction with the SELECT statement to fetch unique records from a table.</p>
+        <p>We use DISTINCT keyword with the SELECT statetment when there is a need to avoid duplicate values present in any specific columns/tables. <br>
+            When we use DISTINCT keyword, SELECT statement returns only the unique records available in the table.</p>
+        <p style="background-color: rgb(247, 249, 199);">The SQL DISTINCT Keyword can be associated with SELECT statement to fetch unique <br>
+            records from single or multiple columns/tables.</p>
+        <h3>Syntax</h3>
+        The basic syntax of SQL DISTINCT keyword is as follows:<br>
+        <pre>SELECT DISTINCT column1, column2,.....columnN 
+            FROM table_name;</pre>
+            <p>Where, column1, column2, etc. are the columns we want to retrieve the unique or distinct values from; <br>
+                and table_name represents the name of the table containing the data.</p>
+        <h2>The SQL HAVING Clause</h2>
+        <p>The SQL HAVING clause is similar to the WHERE clause; both are used to filter rows in a table based on specified criteria. However, the HAVING clause is used to filter grouped rows instead of single rows.<br>
+             These rows are grouped together by the GROUP BY clause, so, the HAVING clause must always be followed by the GROUP BY clause.</p>
+        <p>Moreover, the HAVING clause can be used with aggregate functions such as COUNT(), SUM(), AVG(), etc., <br>
+            whereas the WHERE clause cannot be used with them.</p>
+        <h3>Syntax</h3>
+        Following is the basic syntax of the SQL HAVING clause:<br>
+        <pre>SELECT column1, column2, aggregate_function(column)
+            FROM table_name
+            GROUP BY column1, column2
+            HAVING condition;</pre>
+            The following code block shows the position of the HAVING Clause in a query:<br>
+            <pre>SELECT
+                FROM
+                WHERE
+                GROUP BY
+                HAVING
+                ORDER BY</pre>
+        <h2>The SQL AND Operator</h2>
+        <p>The SQL <b>AND</b> returns <b>true</b> or <b>1</b>, if both its operands evaluates to true. We can use it to combine two conditions in the WHERE clause of an SQL statement.</p>
+        <h3>Syntax</h3>
+        The basic syntax of the SQL AND operator with a WHERE clause is as follows:<br>
+        <pre>WHERE [condition1] AND [condition2];</pre>
+        <p>Where, condition1, condition2 are the conditions we want to apply to the query.</p>
+        <h2>The SQL OR Operator</h2>
+        <p>The <b>OR</b> operator returns true if at least one its operands evaluates to true, and false otherwise.<br>
+             We can combine two conditions in an SQL statement's WHERE clause using the OR operator.</p>
+        <h3>Syntax</h3>
+        The basic syntax of the OR operator with a WHERE clause is as follows:<br>
+        <pre>WHERE [condition1] OR [condition2];</pre>
+        <p>Where, condition1, condition2 are the conditions we want to apply to the query. Each condition is separated by the OR operator.</p>
+        <h3>The SQL IN Operator</h3>
+        <p>The SQL <b>IN Operator</b> is used to specify multiple values or sub query in the <b>WHERE</b> clause. It returns all rows in which the specified column matches one of the values in the list. <br>
+            The list of values or sub query must be specified in the parenthesis e.g. <b>IN (select query)</b> or <b>IN (Value1, Value2, Value3, ...)</b>.</p>
+            <p>In some scenarios we may use multiple OR statements to include multiple conditions in SELECT, DELETE, UPDATE, or INSERT statements.<br>
+                 Alternatively, we can use the IN operator instead of multiples OR statements.</p>
+            <p>The IN operator can be used with any data type in SQL. It is used to filter data from a database table based on specified values.</p>
+        <h3>Syntax</h3>
+        The basic syntax of the SQL IN operator to specify multiple values is as follows:<br>
+        <pre>WHERE column_name IN (value1, value2, value3, ...);</pre>
+        where,
+        <p style="background-color: rgb(247, 249, 199);">value1, value2, value3, ... are the values in the list to be tested against the expression. <br>
+            The IN operator returns TRUE if any of these values is found in the list, and FALSE if it is not.</p>
+        
+    </body>
+</html>

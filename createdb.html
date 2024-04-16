@@ -1,0 +1,33 @@
+<html>
+    <head></head>
+    <body>
+        <h1>CREATE Database</h1>
+        <p>A database is a structured collection of data that is stored in a computer system. They are used to store and retrieve the data efficiently. Databases can be created using different query languages, and SQL is one such language.
+        </p>
+        <h2>CREATE Database Statement</h2>
+        <p>The CREATE DATABASE statement is a DDL (Data Definition Language) statement used to create a new database in SQL.</p>
+        <h3>Syntax</h3>
+        <p>Following is the syntax to create a database in SQL:<br>
+            <font color="blue">CREATE DATABASE</font> DatabaseName;<br><br>
+            Here, the DatabaseName is the name of the database that we want to create. The database name can contain any valid identifiers, 
+            such as number, letters, or underscores. But a DatabaseName cannot be a keyword available in SQL.
+        </p>
+        <h3>Example</h3>
+        <p>Following is an example to create a database <b>testDB</b> using SQL <b>CREATE DATABASE </b>statement:
+        <br>
+        <font color="blue">CREATE DATABASE </font>testDB;
+        </p><br>
+        <h2>List Databases using SQL</h2>
+        <p>Once the database <b>testDB</b> is created, you can check it in the list of databases using SQL command <b>SHOW DATABASES</b>;.</p>
+        <h3>Syntax</h3>
+        <p><font color="blue">SHOW DATABASES;</font></p>
+        <h3>Output</h3>
+        The output will be displayed as:<br>
+        <img src="showdb.png" hieght="50%" width="60%">
+        <h2>Use/Select Databases</h3>
+        <p>We can now set the <b>testDB</b> as the default database by using the <b>USE</b> statement in SQL.</p>
+        <h3>Syntax</h3>
+        <p><font color="blue">USE</font> testDB;</p>
+        <p>That's it! we have successfully created a database in SQL. Now, we can create tables and other database objects within this new database.</p>
+    </body>
+</html>

@@ -1,0 +1,98 @@
+<html>
+    <head></head>
+    <body>
+        <h1>What is SQL View</h1>
+        <p>A view in SQL is a virtual table that is stored in the database with an associated name. It is actually a composition of a table in the form of a predefined SQL query. 
+            <br>A view can contain rows from an existing table (all or selected). A view can be created from one or many tables. Unless indexed, a view does not exist in a database.</p>
+            <p>The data in the view does not exist in the database physically. A view is typically created by the database administrator and is used to:</p>
+            <ul style="background-color: rgb(247, 249, 199);" >
+                <li >Structure data in a way that users or classes of users find natural or intuition.</li>
+                     <li>Restrict access to the data in such a way that a user can see and (sometimes) modify exactly what they need and no more.</li>
+                    <li>Summarize data from various tables which can be used to generate reports.</li>
+            </ul> 
+            <h2>The SQL CREATE VIEW Statement</h2>
+            To create a view in a database, you can use the SQL CREATE VIEW statement.<br>
+            <h3>Syntax</h3>
+            <p>Following is the syntax of the SQL CREATE VIEW statement:</p>
+            <pre>REATE VIEW view_name AS
+                SELECT column1, column2....
+                FROM table_name
+                WHERE [condition];</pre>
+            <h3>Example</h3>
+            <p>Assume we have created a table named CUSTOMERS using the <b>CREATE TABLE</b> statement using the following query</p>
+            <pre>CREATE TABLE CUSTOMERS(
+                ID   INT              NOT NULL,
+                NAME VARCHAR (20)     NOT NULL,
+                AGE  INT              NOT NULL,
+                ADDRESS  CHAR (25) ,
+                SALARY   DECIMAL (18, 2),
+                PRIMARY KEY (ID)
+             );</pre>
+             <p>Now, insert values into this table using the INSERT statement as follows :</p>
+             <pre>INSERT INTO CUSTOMERS VALUES
+                (1, 'Ramesh', 32, 'Ahmedabad', 2000.00 ),
+                (2, 'Khilan', 25, 'Delhi', 1500.00 ),
+                (3, 'Kaushik', 23, 'Kota', 2000.00 ),
+                (4, 'Chaitali', 25, 'Mumbai', 6500.00 ),
+                (5, 'Hardik', 27, 'Bhopal', 8500.00 ),
+                (6, 'Komal', 22, 'Hyderabad', 4500.00 ),
+                (7, 'Muffy', 24, 'Indore', 10000.00 );</pre>
+                Following query creates a view based on the above created table:<br>
+                <pre>CREATE VIEW CUSTOMERS_VIEW AS SELECT * FROM CUSTOMERS;</pre>
+                <h3>Verification</h3>
+                You can verify the contents of a view using the select query as shown below:<br>
+                <pre>SELECT * FROM CUSTOMERS_VIEW;</pre>
+                The view is displayed as follows:<br>
+                <img src="view.png" height="40%" width="55%">
+                <h1>DROP or DELETE View</h1>
+                <p>The SQL DROP VIEW statement is used to delete an existing view, along with its definition and other information. Once the view is dropped,
+                    <br> all the permissions for it will also be removed. We can also drop indexed views with this statement.</p>
+                    <ul style="background-color: rgb(247, 249, 199);" >
+                        <li>While trying to perform queries, the database engine checks all the objects referenced in that statement are valid and exist.<br>
+                             So, if a view does not exist in the database, the DROP VIEW statement will throw an error.</li>
+                             <li>To drop a table in a database, one must require ALTER permission on the said table and CONTROL permissions on the table schema.</li>
+                    </ul>
+                <h3>Syntax</h3>
+                The basic syntax of this DROP VIEW statement is as follows:<br>
+                <pre>DROP VIEW view_name;</pre>
+                <h3>Example</h3>
+                <p>Assume we have created a table named CUSTOMERS using the CREATE TABLE statement using the following query</p>
+                <pre>CREATE TABLE CUSTOMERS(
+                    ID   INT              NOT NULL,
+                    NAME VARCHAR (20)     NOT NULL,
+                    AGE  INT              NOT NULL,
+                    ADDRESS  CHAR (25) ,
+                    SALARY   DECIMAL (18, 2),
+                    PRIMARY KEY (ID)
+                 );</pre>
+                 Now, insert values into this table using the INSERT statement as follows:<br>
+                 <pre>INSERT INTO CUSTOMERS VALUES
+                    (1, 'Ramesh', 32, 'Ahmedabad', 2000.00 ),
+                    (2, 'Khilan', 25, 'Delhi', 1500.00 ),
+                    (3, 'Kaushik', 23, 'Kota', 2000.00 ),
+                    (4, 'Chaitali', 25, 'Mumbai', 6500.00 ),
+                    (5, 'Hardik', 27, 'Bhopal', 8500.00 ),
+                    (6, 'Komal', 22, 'Hyderabad', 4500.00 ),
+                    (7, 'Muffy', 24, 'Indore', 10000.00 );</pre>
+                    Assume we have created 3 views using the CREATE VIEW statement as shown below:<br>
+                    <pre>CREATE VIEW CUSTOMERS_VIEW1 AS SELECT * FROM CUSTOMERS;
+                        CREATE VIEW CUSTOMERS_VIEW2 AS SELECT * FROM CUSTOMERS;
+                        CREATE VIEW CUSTOMERS_VIEW3 AS SELECT * FROM CUSTOMERS;</pre>
+                        You can verify the list of all the views using the following query:<br>
+                    <pre>SELECT TABLE_SCHEMA, TABLE_NAME 
+                        FROM INFORMATION_SCHEMA.VIEWS
+                        WHERE TABLE_SCHEMA='tutorials';</pre>
+                        This will display the list of views as follows:<br>
+                        <img src="view2.png" height="20%" width="45%">
+                    <p>Now, lets drop two views from the above created views using the DROP VIEW statement.</p>
+                    <pre>DROP VIEW CUSTOMERS_VIEW1;
+                        DROP VIEW CUSTOMERS_VIEW2;</pre>
+                    <h3>Verification</h3>
+                    <p>Once we have deleted all the views if you try to retrieve the list of views you will get an empty set as shown below:</p>
+                    <pre>SELECT TABLE_SCHEMA, TABLE_NAME 
+                        FROM INFORMATION_SCHEMA.VIEWS
+                        WHERE TABLE_SCHEMA='tutorials';</pre>
+                        The remaining list of views is as follows:<br>
+                    <img src="view3.png" height="15%" width="50%">
+        </body>
+</html>

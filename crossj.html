@@ -1,0 +1,59 @@
+<html>
+    <head></head>
+    <body>
+        <h1>The SQL Cross Join</h1>
+        <p>An SQL Cross Join is a basic type of inner join that is used to retrieve the Cartesian product (or cross product) of two individual tables. 
+            <br>That means, this join will combine each row of the first table with each row of second table (i.e. permutations).</p>
+        <p>The sample figure below illustrates the cross join in a simple manner.</p>
+        <img src="cj1.png" height="40%" width="50%">
+        <p>As you can see, we considered two table columns: Hair Style and Hair Type. Each of these columns contain some records that need to be matched. Hence, using cross join, we combine each record in the "Hair Style" column with all records in the "Hair Type" column. 
+            <br>The resultant table obtained is considered as the Cartesian product or Joined table.</p>
+        <h3>Syntax</h3>
+        Following is the basic syntax of the Cross Join query in SQL:<br>
+        <pre>SELECT column_name(s)
+            FROM table1
+            CROSS JOIN table2;</pre>
+        <h3>Example</h3>
+        <p>Assume we have created a table named CUSTOMERS, which contains the personal details of customers 
+            <br>including their name, age, address and salary etc., using the following query:</p>
+        <pre>CREATE TABLE CUSTOMERS (
+            ID INT NOT NULL,
+            NAME VARCHAR (20) NOT NULL,
+            AGE INT NOT NULL,
+            ADDRESS CHAR (25),
+            SALARY DECIMAL (18, 2),       
+            PRIMARY KEY (ID)
+         );</pre>
+         Now, insert values into this table using the INSERT statement as follows:<br>
+         <pre>
+            INSERT INTO CUSTOMERS VALUES
+            (1, 'Ramesh', 32, 'Ahmedabad', 2000.00 ),
+            (2, 'Khilan', 25, 'Delhi', 1500.00 );
+         </pre>
+         The table will be created as:<br>
+        <img src="cj2.png" height="20%" width="50%">
+        <p>Let us create another table ORDERS, containing the details of orders made and the date they are made on.</p>
+        <pre>CREATE TABLE ORDERS (
+            OID INT NOT NULL,
+            DATE VARCHAR (20) NOT NULL,
+            CUSTOMER_ID INT NOT NULL,
+            AMOUNT DECIMAL (18, 2)
+         );</pre>
+         <p>Using the INSERT statement, insert values into this table as follows</p>
+         <pre>INSERT INTO ORDERS VALUES 
+            (100, '2009-10-08 00:00:00', 3, 1500.00),
+            (101, '2009-11-20 00:00:00', 2, 1560.00);</pre>
+            INSERT INTO ORDERS VALUES 
+            (100, '2009-10-08 00:00:00', 3, 1500.00),
+            (101, '2009-11-20 00:00:00', 2, 1560.00);
+            The table is displayed as follows:<br>
+            <p>Now, if we execute the following Cross Join query on these two tables given above, the cross join
+                <br> combines each row in CUSTOMERS table with each row in ORDERS table.</p>
+            <pre>SELECT  ID, NAME, AMOUNT, DATE
+                FROM CUSTOMERS
+                CROSS JOIN ORDERS;</pre>
+            <h3>Output</h3>
+            The resultant table is as follows:<br>
+            <img src="cj4.png" height="20%" width="50%">
+    </body>
+</html>

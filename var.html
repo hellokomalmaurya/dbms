@@ -1,0 +1,81 @@
+<html>
+    <head></head>
+    <body>
+        <h1>
+            PL/SQL - Variables
+        </h1>
+        <p> Each variable in PL/SQL has a specific data type, which determines the size and the layout of the variable's memory;<br>
+             the range of values that can be stored within that memory and the set of operations that can be applied to the variable.</p>
+        <h2>Variable Declaration in PL/SQL</h2>
+        The syntax for declaring a variable is:<br>
+        <pre>variable_name [CONSTANT] datatype [NOT NULL] [:= | DEFAULT initial_value] </pre>
+        <h3>example</h3>
+        <pre>sales number(10, 2); 
+            name varchar2(25); 
+            address varchar2(100); </pre>
+        <h2>Initializing Variables in PL/SQL</h2>
+        <p>Whenever you declare a variable, PL/SQL assigns it a default value of NULL. If you want to initialize a variable with a<br>
+             value other than the NULL value, you can do so during the declaration, using either of the following</p>
+             <ul style="background-color: rgb(247, 249, 199);" >
+                <li >The DEFAULT keyword</li>
+                <li>TThe assignment operator</li>
+            </ul>
+        <h3>example</h3>
+        <pre>counter binary_integer := 0; 
+            greetings varchar2(20) DEFAULT 'Have a Good Day';</pre>
+        <p>example which makes use of various types of variables:</p>
+        <pre>DECLARE 
+            a integer := 10; 
+            b integer := 20; 
+            c integer; 
+            f real; 
+         BEGIN 
+            c := a + b; 
+            dbms_output.put_line('Value of c: ' || c); 
+            f := 70.0/3.0; 
+            dbms_output.put_line('Value of f: ' || f); 
+         END; 
+         /  </pre>
+         When the above code is executed, it produces the following result:<br>
+         <pre>Value of c: 30 
+            Value of f: 23.333333333333333333  
+            
+            PL/SQL procedure successfully completed. </pre>
+
+        <h2>Constants</h2>
+        <p> A constant holds a value that once declared, does not change in the program. <br>
+            A constant declaration specifies its name, data type, and value, and allocates storage for it.</p>
+        <h2>Declaring a Constant</h2>
+        <p>A constant is declared using the CONSTANT keyword. It requires an initial value and does not allow that value to be changed</p>
+        <h3>example</h3>
+        <pre>PI CONSTANT NUMBER := 3.141592654; 
+            DECLARE 
+               -- constant declaration 
+               pi constant number := 3.141592654; 
+               -- other declarations 
+               radius number(5,2);  
+               dia number(5,2);  
+               circumference number(7, 2); 
+               area number (10, 2); 
+            BEGIN  
+               -- processing 
+               radius := 9.5;  
+               dia := radius * 2;  
+               circumference := 2.0 * pi * radius; 
+               area := pi * radius * radius; 
+               -- output 
+               dbms_output.put_line('Radius: ' || radius); 
+               dbms_output.put_line('Diameter: ' || dia); 
+               dbms_output.put_line('Circumference: ' || circumference); 
+               dbms_output.put_line('Area: ' || area); 
+            END; 
+            / </pre>
+            When the above code is executed at the SQL prompt, it produces the following result:<br>
+            <pre>Radius: 9.5 
+                Diameter: 19 
+                Circumference: 59.69 
+                Area: 283.53  
+                
+                Pl/SQL procedure successfully completed. </pre>
+    </body>
+</html>

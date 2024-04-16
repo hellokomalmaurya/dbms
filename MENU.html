@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Centered Buttons</title>
+<link href="https://fonts.googleapis.com/css2?family=Architects+Daughter&display=swap" rel="stylesheet"> <!-- Add Google Fonts -->
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-image: url('empty-blackboard.jpg'); /* Replace 'your_image_url.jpg' with the actual URL of your image */
+        background-size: cover;
+        background-position: center;
+        color: #fff;
+        font-family: 'Architects Daughter', cursive; /* Apply Architects Daughter font */
+    }
+
+    .button-container {
+        text-align: center;
+    }
+
+    .button-container button {
+        padding: 20px 40px;
+        margin: 20px;
+        font-size: 20px;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        background-color: rgba(255, 255, 255, 0.8); /* White color with 80% opacity */
+        color: #000;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        transition: all 0.3s ease;
+    }
+
+    .button-container button:hover {
+        background-color: rgba(0, 0, 0, 0.8); /* Black color with 80% opacity */
+        color: #fff;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    }
+</style>
+</head>
+<body>
+    <h1>CHOOSE WHERE TO BEGIN</h1>
+    <div class="button-container">
+        <a href ="sql.html"><button id="button1">SQL</button></a>
+        <a href ="plsql.html"><button id="button2">PLSQL</button></a>
+    </div>
+</body>
+</html>

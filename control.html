@@ -1,0 +1,55 @@
+<html>
+    <head></head>
+    <body>
+        <h1>PL/SQL - Conditions</h1>
+        <p>Decision-making structures require that the programmer specify one or more conditions to be evaluated or tested <br>
+            by the program, along with a statement or statements to be executed if the condition is determined to be true, <br>
+            and optionally, other statements to be executed if the condition is determined to be false.</p>
+        <p>Following is the general form of a typical conditional (i.e., decision making) structure found in most of the programming languages:</p>
+        <img src="con1.png" height="44%" width="35%"><br><br>
+        PL/SQL programming language provides following types of decision-making statements.<br>
+        <img src="con2.png" height="60%" width="45%"><br>
+        <img src="con3.png" height="20%" width="45%">
+    <h2>PL/SQL - Loops</h2>
+    <p>Programming languages provide various control structures that allow for more complicated execution paths.</p>
+    <p>A loop statement allows us to execute a statement or group of statements multiple times and following is the <br>
+        general form of a loop statement in most of the programming languages</p>
+    <img src="con4.png"  height="44%" width="35%"><br>
+    PL/SQL provides the following types of loop to handle the looping requirements.<br>
+    <img src="con5.png" height="45%" width="50%">
+    <h2>Labeling a PL/SQL Loop</h2>
+    <p>PL/SQL loops can be labeled. The label should be enclosed by double angle brackets (<< and >>) and appear at the beginning of the LOOP statement.<br>
+         The label name can also appear at the end of the LOOP statement. You may use the label in the EXIT statement to exit from the loop.</p>
+         The following program illustrates the concept:<br>
+         <pre>DECLARE 
+            i number(1); 
+            j number(1); 
+         BEGIN 
+            << outer_loop >> 
+            FOR i IN 1..3 LOOP 
+               << inner_loop >> 
+               FOR j IN 1..3 LOOP 
+                  dbms_output.put_line('i is: '|| i || ' and j is: ' || j); 
+               END loop inner_loop; 
+            END loop outer_loop; 
+         END; 
+         /</pre>
+         <p>When the above code is executed at the SQL prompt, it produces the following result: </p>
+         <pre>i is: 1 and j is: 1 
+            i is: 1 and j is: 2 
+            i is: 1 and j is: 3 
+            i is: 2 and j is: 1 
+            i is: 2 and j is: 2 
+            i is: 2 and j is: 3 
+            i is: 3 and j is: 1 
+            i is: 3 and j is: 2 
+            i is: 3 and j is: 3  
+            
+            PL/SQL procedure successfully completed. </pre>
+            <h2>The Loop Control Statements</h2>
+            <p>Loop control statements change execution from its normal sequence. When execution leaves a scope, <br>
+                all automatic objects that were created in that scope are destroyed.</p>
+        <p>PL/SQL supports the following control statements. Labeling loops also help in taking the control outside a loop.</p>
+        <img src="con6.png" height="40%" width="50%">
+    </body>
+</html>

@@ -1,0 +1,48 @@
+<html>
+    <head></head>
+    <body>
+        <h2>The SQL UPDATE Statement</h2>
+        <p>The SQL UPDATE Statement is used to modify the existing records in a table. This statement is a part of Data Manipulation Language (DML), <br>
+            as it only modifies the data present in a table without affecting the table's structure.
+            To filter records that needs to be modified, you can use a WHERE clause with UPDATE statement. <br>Using a WHERE clause, you can either update a single row or multiple rows.</p>
+            <h3>Syntax</h3>
+            The basic syntax of the SQL UPDATE statement with a WHERE clause is as follows:<br>
+            <pre>UPDATE table_name
+                SET column1 = value1, column2 = value2,..., columnN = valueN
+                WHERE [condition];</pre>
+            <h3>Example</h3>
+            Assume we have created a table named CUSTOMERS using the CREATE TABLE statement as shown below:<br>
+            <pre>CREATE TABLE CUSTOMERS (
+                ID INT NOT NULL,
+                NAME VARCHAR (20) NOT NULL,
+                AGE INT NOT NULL,
+                ADDRESS CHAR (25),
+                SALARY DECIMAL (18, 2),       
+                PRIMARY KEY (ID)
+             );</pre>
+             
+            Now, insert values into this table using the INSERT statement as follows:<br>
+            <pre>INSERT INTO CUSTOMERS VALUES 
+                (1, 'Ramesh', 32, 'Ahmedabad', 2000.00 ),
+                (2, 'Khilan', 25, 'Delhi', 1500.00 ),
+                (3, 'Kaushik', 23, 'Kota', 2000.00 ),
+                (4, 'Chaitali', 25, 'Mumbai', 6500.00 ),
+                (5, 'Hardik', 27, 'Bhopal', 8500.00 ),
+                (6, 'Komal', 22, 'Hyderabad', 4500.00 ),
+                (7, 'Muffy', 24, 'Indore', 10000.00 );</pre>
+                The table will be created as:<br>
+                <img src="updating1.png" height="40%" width="50%"><br>
+                The following query will update the ADDRESS for a customer whose ID number is 6 in the table.<br>
+                <pre>UPDATE CUSTOMERS SET ADDRESS = 'Pune' WHERE ID = 6;</pre>
+                <h3>Output</h3>
+                The query produces the following output:<br>
+                <pre>Query OK, 1 row affected (0.13 sec)
+                    Rows matched: 1  Changed: 1  Warnings: 0</pre>
+                <h3>Verification</h3>
+                To verify whether the records of the table are modified or not, use the following SELECT query below:<br>
+                <pre>SELECT * FROM CUSTOMERS WHERE ID=6;</pre>
+                Now, the CUSTOMERS table would have the following records:<br>
+                <img src="updating2.png" height="13%" width="50%">
+
+        </body>
+</html>

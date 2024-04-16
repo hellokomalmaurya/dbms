@@ -1,0 +1,101 @@
+<html>
+    <head></head>
+    <body>
+        <h1>PL/SQL - Exceptions</h1>
+        <p> An exception is an error condition during a program execution. PL/SQL supports programmers to catch such conditions using <b>EXCEPTION</b> block in <br>
+            the program and an appropriate action is taken against the error condition. </p>
+            There are two types of exceptions:<br>
+            <ul style="background-color: rgb(247, 249, 199);" >
+                <li >System-defined exceptions</li>
+                     <li>User-defined exceptions</li>
+            </ul>
+        <h2>Syntax for Exception Handling</h2>
+        <p>The general syntax for exception handling is as follows. Here you can list down as many exceptions as you can handle. <br>
+            The default exception will be handled using <b>WHEN</b> others <b>THEN</b>:</p>
+        <pre>DECLARE 
+            declarations section
+         BEGIN 
+            executable command(s)
+         EXCEPTION 
+            exception handling goes here
+            WHEN exception1 THEN  
+               exception1-handling-statements  
+            WHEN exception2  THEN  
+               exception2-handling-statements  
+            WHEN exception3 THEN  
+               exception3-handling-statements 
+            ........ 
+            WHEN others THEN 
+               exception3-handling-statements 
+         END;</pre>
+        <h3>Example</h3>
+        <p>DECLARE 
+            c_id customers.id%type := 8; 
+            c_name customerS.Name%type; 
+            c_addr customers.address%type; 
+         BEGIN 
+            SELECT  name, address INTO  c_name, c_addr 
+            FROM customers 
+            WHERE id = c_id;  
+            DBMS_OUTPUT.PUT_LINE ('Name: '||  c_name); 
+            DBMS_OUTPUT.PUT_LINE ('Address: ' || c_addr); 
+         
+         EXCEPTION 
+            WHEN no_data_found THEN 
+               dbms_output.put_line('No such customer!'); 
+            WHEN others THEN 
+               dbms_output.put_line('Error!'); 
+         END; 
+         /</p>
+         <p>When the above code is executed at the SQL prompt</p>
+         <pre>No such customer!  
+            PL/SQL procedure successfully completed. </pre>
+        <p>The above program displays the name and address of a customer whose ID is given. Since there is no customer with ID value 8 in our database,<br>
+             the program raises the run-time exception <b>NO_DATA_FOUND</b>, which is captured in the <b>EXCEPTION</b> block.</p>
+             <h2>User-defined Exceptions</h2>
+             <p>PL/SQL allows you to define your own exceptions according to the need of your program. A user-defined exception must be declared <br>
+                and then raised explicitly, using either a RAISE statement or the procedure</p>
+            <p>The syntax for declaring an exception is:</p>
+            <pre>DECLARE 
+                my-exception EXCEPTION; </pre>
+            <h3>Example</h3>
+            <pre>DECLARE 
+                c_id customers.id%type := &cc_id; 
+                c_name customerS.Name%type; 
+                c_addr customers.address%type;  
+                -- user defined exception 
+                ex_invalid_id  EXCEPTION; 
+             BEGIN 
+                IF c_id <= 0 THEN 
+                   RAISE ex_invalid_id; 
+                ELSE 
+                   SELECT  name, address INTO  c_name, c_addr 
+                   FROM customers 
+                   WHERE id = c_id;
+                   DBMS_OUTPUT.PUT_LINE ('Name: '||  c_name);  
+                   DBMS_OUTPUT.PUT_LINE ('Address: ' || c_addr); 
+                END IF; 
+             
+             EXCEPTION 
+                WHEN ex_invalid_id THEN 
+                   dbms_output.put_line('ID must be greater than zero!'); 
+                WHEN no_data_found THEN 
+                   dbms_output.put_line('No such customer!'); 
+                WHEN others THEN 
+                   dbms_output.put_line('Error!');  
+             END; 
+             /</pre>
+             <p>When the above code is executed at the SQL prompt, it produces the following result:</p>
+             <pre>Enter value for cc_id: -6 (let's enter a value -6) 
+                old  2: c_id customers.id%type := &cc_id; 
+                new  2: c_id customers.id%type := -6; 
+                ID must be greater than zero! 
+                 
+                PL/SQL procedure successfully completed. </pre>
+                <h2>Pre-defined Exceptions</h2>
+                <p>PL/SQL provides many pre-defined exceptions, which are executed when any database rule is violated by a program. For example, <br>
+                    the predefined exception NO_DATA_FOUND is raised when a SELECT INTO statement returns no rows.</p>
+                
+
+    </body>
+</html>

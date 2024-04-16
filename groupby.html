@@ -1,0 +1,45 @@
+<html>
+    <head></head>
+    <body>
+        <h2>The SQL GROUP BY Clause</h2>
+        <p>The SQL GROUP BY clause is used in conjunction with the SELECT statement to arrange identical data into groups. This clause follows the WHERE clause in a SELECT statement and precedes the ORDER BY and HAVING clauses (if they exist).</p>
+        <p>The main purpose of grouping the records of a table based on particular columns is to perform calculations on these groups. Therefore, The GROUP BY clause is typically used with aggregate functions such as SUM(), COUNT(), AVG(), MAX(), or MIN() etc.</p>
+        <p>For example, if you have a table named SALES_DATA containing the sales data with the columns YEAR, PRODUCT, and SALES. To calculate the total sales in an year, the GROUP BY clause can be used to group the records in this table based on the year and calculate the sum of sales in each group using the SUM() function.</p>
+        <h3>Syntax</h3>
+        <pre>
+            SELECT column_name(s)
+            FROM table_name
+            GROUP BY column_name(s);
+        </pre>
+        <h2>GROUP BY Clause with Aggregate Functions</h2>
+        <p>Typically, we group the record of a table to perform calculations on them. Therefore, the SQL GROUP BY clause is
+            <br> often used with the aggregate functions such as SUM(), AVG(), MIN(), MAX(), COUNT(), etc.</p>
+            <h3>Example</h3>
+            <p>Assume we have created a table named CUSTOMERS, which contains the personal details of customers including their name, age, address and salary, using the following query:</p>
+            <pre>CREATE TABLE CUSTOMERS (
+                ID INT NOT NULL,
+                NAME VARCHAR (20) NOT NULL,
+                AGE INT NOT NULL,
+                ADDRESS CHAR (25),
+                SALARY DECIMAL (18, 2),
+                PRIMARY KEY (ID)
+             );</pre>
+             <p>Now insert values into this table using the INSERT statement as follows:</p>
+             <pre>INSERT INTO CUSTOMERS VALUES
+                (1, 'Ramesh', 32, 'Ahmedabad', 2000.00),
+                (2, 'Khilan', 25, 'Delhi', 1500.00),
+                (3, 'Kaushik', 23, 'Kota', 2000.00),
+                (4, 'Chaitali', 25, 'Mumbai', 6500.00),
+                (5, 'Hardik', 27, 'Bhopal', 8500.00),
+                (6, 'Komal', 22, 'Hyderabad', 4500.00),
+                (7, 'Muffy', 24, 'Indore', 10000.00);</pre>
+                The table created is as shown below:<br>
+                <img src="grp1.png" height="30%" width="45%">
+                <p>The following SQL query groups the CUSTOMERS table based on AGE and counts the number of records in each group:</p>
+                <pre>SELECT AGE, COUNT(Name) FROM CUSTOMERS GROUP BY AGE;</pre>
+                <h3>Output</h3>
+                Following is the result produced:<br>
+                <img src="grp2.png"  height="30%" width="35%">
+
+    </body>
+</html>

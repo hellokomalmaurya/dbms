@@ -1,0 +1,24 @@
+<html>
+    <head></head>
+    <body>
+        <h2>The SQL INSERT INTO Statement</h2>
+        <p>The SQL INSERT INTO Statement is used to add new rows of data into a table in the database. Almost all the RDBMS provide this SQL query to add the records in database tables.
+            <br>
+            Each value in the records we are inserting in a table using this statement should be of the same datatype as the respective column and satisfy the constraints of the column (if any). 
+            <br>The values passed using an insert statement should match the number of columns in the table or, the number of columns mentioned in the current query.<br>
+             If any of these conditions are not satisfied, this statement generates an error.</p>
+            <h3>Syntax</h3>
+            syntax of the SQL INSERT INTO statement which are shown below:<br>
+            <pre>INSERT INTO TABLE_NAME 
+                VALUES (value1,value2...valueN);</pre>      
+            <h3>Example</h3>
+            To see an example, let us create a table with name CUSTOMERS in the MySQL database using the CREATE TABLE statement as shown below:<br>
+            <pre>INSERT INTO CUSTOMERS 
+                VALUES (7, 'Muffy', 24, 'Indore', 10000.00 );</pre>  
+            <h3>Verification</h3>
+            To check if the records are inserted into the CUSTOMERS table, use the SELECT query<br>
+            <pre>SELECT * FROM CUSTOMERS;</pre> 
+            The table will be displayed with all the records included in it.<br>
+            <img src="insert.png"  height="40%" width="55%">
+    </body>
+</html>
